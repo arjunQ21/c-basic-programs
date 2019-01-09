@@ -1,3 +1,8 @@
+/*
+Bug in this program is that when a 0 is in input number, it gets lost in the output,
+because it doesnot get added to numbers array
+*/
+
 #include <stdio.h>
 #include <math.h>
 
@@ -30,6 +35,24 @@ int map[10][7]={
 	{1, 1, 1, 1, 1, 1, 1},
 	{1, 1, 1, 1, 0, 1, 1}	
 };
+
+main(){
+	int number ;
+	printf("Written By:\n\tArjun Adhikari");
+	printf("\nHey, This program shows Seven-Segment-Display of any numbers you enter.\n");
+	
+	char continueShowing = 'y' ;
+	
+	while(continueShowing == 'Y' || continueShowing == 'y'){
+		printf("\nEnter a number ( maximum %d digits ): ", LIMIT);
+		scanf("%d", &number);	
+		show(number);
+		printf("\nPress: 'Y' or 'y' to try again,\tAny key to stop this program.\n");
+		continueShowing = getch();		
+	}
+}
+
+//FUNCTIONS 
 
 void show( int num){
 	int n;
@@ -103,23 +126,6 @@ void show( int num){
 	//END THIRD LINE
 	//little margin for display
 	printf("\n");		
-}
-
-
-main(){
-	int number ;
-	printf("Written By:\n\tArjun Adhikari");
-	printf("\nHey, This program shows Seven-Segment-Display of any numbers you enter.\n");
-	
-	char continueShowing = 'y' ;
-	
-	while(continueShowing == 'Y' || continueShowing == 'y'){
-		printf("\nEnter a number ( maximum %d digits ): ", LIMIT);
-		scanf("%d", &number);	
-		show(number);
-		printf("\nPress: 'Y' or 'y' to try again,\tAny key to stop this program.\n");
-		continueShowing = getch();		
-	}
 }
 
 void resetNumbers(){
