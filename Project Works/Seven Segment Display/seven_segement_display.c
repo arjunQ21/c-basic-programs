@@ -60,7 +60,7 @@ void show( int num){
 	addToNumbers( num );
 //	printf("\nArray Numbers:\n");
 //	showArray(numbers);
-	printf("\nShowing Seven Segement Display Of: %d\n", num);
+	printf("\nShowing Seven Segement Display Of %d:\n\n", num);
 	//SHOWING FIRST LINE
 	for( n = 0 ; n < chars ; n++){
 		//letter spacing and default blank space
