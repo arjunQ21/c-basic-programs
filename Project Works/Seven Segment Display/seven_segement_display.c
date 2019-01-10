@@ -1,28 +1,32 @@
 /*
-Bug in this program is that when a 0 is in input number, it gets lost in the output,
-because it doesnot get added to numbers array
+Bug Removed :)
 */
 
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 
-#define LIMIT 10
+#define LIMIT 20
 
-void addToNumbers( int num) ;
+//FUNCTION DEFINITION
 void showArray( int arr[]) ;
-void show(int a);
-int firstDigitOf( int );
-int removedFirstDigit( int );
+void showSevenSegment();
+//void addToNumbers( int num) ;
+//int firstDigitOf( int );
+//int removedFirstDigit( int );
 void resetNumbers();
+void addInputToNumbers();
 
-
-char l_spacing[] = " ";
+//GLOBAL VARIABLES
+//char l_spacing[] = " ";
 char def_blank[] = " ";
 char def_zero[] = " ";
 int numbers[ LIMIT ] = {0} ;
-int chars = 1 ;
-//int currentMap[7] ;
-
+char input[ LIMIT ] ;
+int chars = 0 ;
+// must be an integer between 0 - 9
+int def_invalid = 8 ;
+//map of every numbers from 0 to 9
 int map[10][7]={
 	{1, 1, 1, 0, 1, 1, 1},
 	{0, 0, 1, 0, 0, 1, 0},
@@ -37,16 +41,15 @@ int map[10][7]={
 };
 
 main(){
-	int number ;
 	printf("Written By:\n\tArjun Adhikari");
 	printf("\nHey, This program shows Seven-Segment-Display of any numbers you enter.\n");
 	
 	char continueShowing = 'y' ;
 	
 	while(continueShowing == 'Y' || continueShowing == 'y'){
-		printf("\nEnter a number ( maximum %d digits ): ", LIMIT);
-		scanf("%d", &number);	
-		show(number);
+		printf("\nEnter a number (maximum %d digits): ", LIMIT);
+		scanf("%s", input);
+		showSevenSegment();
 		printf("\nPress: 'Y' or 'y' to try again,\tAny key to stop this program.\n");
 		continueShowing = getch();		
 	}
@@ -54,18 +57,15 @@ main(){
 
 //FUNCTIONS 
 
-void show( int num){
+void showSevenSegment(){
 	int n;
 	resetNumbers() ;
-	addToNumbers( num );
-//	printf("\nArray Numbers:\n");
-//	showArray(numbers);
-	printf("\nShowing Seven Segement Display Of %d:\n\n", num);
+	addInputToNumbers() ;
+//	printf("\nShowing Seven Segement Display Of %s:\n\n", input);
+
 	//SHOWING FIRST LINE
 	for( n = 0 ; n < chars ; n++){
-		//letter spacing and default blank space
-		//printf("%s", l_spacing);
-		// default blank space
+		//default blank space
 		printf("%s", def_blank);
 		//number dependent
 		if(map[numbers[n]][0] == 1){
@@ -78,21 +78,22 @@ void show( int num){
 	}
 	printf("\n");
 	//END FIRST LINE
+	
 	//SHOWING SECOND LINE
 	for( n = 0 ; n < chars ; n++){
-		//first pipe
+		//first pipe, index = 1
 		if(map[numbers[n]][1] == 1){
 			printf("|");
 		}else{
 			printf("%s", def_zero);
 		}
-		//second underscore index = 3
+		//second underscore, index = 3
 		if(map[numbers[n]][3] == 1){
 			printf("__");
 		}else{
 			printf("%s%s", def_zero, def_zero);
 		}
-		//second pipe index = 2
+		//second pipe, index = 2
 		if(map[numbers[n]][2] == 1){
 			printf("|");
 		}else{
@@ -101,6 +102,7 @@ void show( int num){
 	}	
 	printf("\n");
 	//END SECOND LINE
+	
 	//THIRD LINE
 	for( n = 0 ; n < chars ; n++){
 		//third pipe
@@ -135,10 +137,39 @@ void resetNumbers(){
 	}
 }
 
+void addInputToNumbers(){
+	int i, ascii = 48 ;
+	for(i = 0; i < LIMIT ; i++){
+		if( i + 1 <= strlen(input)){
+			ascii = (int)input[i] ;
+			if(ascii >= 48 && ascii <= 57){
+				numbers[i] = ascii - 48 ;
+			}else{
+				printf("\nInvalid Number '%c' found. Showing %d instead.\n", ascii, def_invalid );
+				numbers[i] = def_invalid ;
+			}	
+			chars ++ ;		
+		}else{
+			break ;
+		}
+	}
+}
+
+void showArray( int arr[]){
+	int i ;
+	for( i = 0 ; i < LIMIT ; i++){
+		printf(",\t");
+		printf("%d", arr[i]);
+	}
+}
+
+//Below functions were used in previous version of this program, not used anymore
+
 int removedFirstDigit(int n){
 	/* 
-	 12345 => 54321 => 5432 => 2345
-	 BUG: 2034 => 4302 => 430 => 034 = 34 , insted of 034  
+		returns an integer with its first digit removed
+		12345 => 54321 => 5432 => 2345
+		BUG: 2034 => 4302 => 430 => 034 = 34 , insted of 034  
 	*/
 	int rem, last, reverse = 0, final = 0;
 	while( n > 0){
@@ -179,9 +210,4 @@ void addToNumbers( int num ){
 	}
 }
 
-void showArray( int arr[]){
-	int i ;
-	for( i = 0 ; i < LIMIT ; i++){
-		printf("\t%d,", arr[i]);
-	}
-}
+
