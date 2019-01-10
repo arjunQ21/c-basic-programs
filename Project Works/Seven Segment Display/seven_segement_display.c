@@ -11,11 +11,12 @@ Bug Removed :)
 //FUNCTION DEFINITION
 void showArray( int arr[]) ;
 void showSevenSegment();
+void resetNumbers();
+void addInputToNumbers();
 //void addToNumbers( int num) ;
 //int firstDigitOf( int );
 //int removedFirstDigit( int );
-void resetNumbers();
-void addInputToNumbers();
+
 
 //GLOBAL VARIABLES
 //char l_spacing[] = " ";
@@ -25,7 +26,7 @@ int numbers[ LIMIT ] = {0} ;
 char input[ LIMIT ] ;
 int chars = 0 ;
 // must be an integer between 0 - 9
-int def_invalid = 8 ;
+int def_invalid = 0 ;
 //map of every numbers from 0 to 9
 int map[10][7]={
 	{1, 1, 1, 0, 1, 1, 1},
@@ -50,9 +51,11 @@ main(){
 		printf("\nEnter a number (maximum %d digits): ", LIMIT);
 		scanf("%s", input);
 		showSevenSegment();
-		printf("\nPress: 'Y' or 'y' to try again,\tAny key to stop this program.\n");
+		printf("\nWanna Try again?(y)");
 		continueShowing = getch();		
 	}
+	printf("\n\nYou chose to exit.");
+	getch();
 }
 
 //FUNCTIONS 
@@ -145,7 +148,7 @@ void addInputToNumbers(){
 			if(ascii >= 48 && ascii <= 57){
 				numbers[i] = ascii - 48 ;
 			}else{
-				printf("\nInvalid Number '%c' found. Showing %d instead.\n", ascii, def_invalid );
+				printf("\nInvalid Number '%c'. Showing %d instead.\n", ascii, def_invalid );
 				numbers[i] = def_invalid ;
 			}	
 			chars ++ ;		
