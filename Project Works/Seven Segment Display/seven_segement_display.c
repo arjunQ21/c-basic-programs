@@ -63,9 +63,16 @@ main(){
 void showSevenSegment(){
 	int n;
 	resetNumbers() ;
+<<<<<<< HEAD
 	addInputToNumbers() ;
 //	printf("\nShowing Seven Segement Display Of %s:\n\n", input);
 
+=======
+	addToNumbers( num );
+//	printf("\nArray Numbers:\n");
+//	showArray(numbers);
+	printf("\nShowing Seven Segement Display Of %d:\n\n", num);
+>>>>>>> bd31f6966d1b33665fc5ffbd834186c2b49941dd
 	//SHOWING FIRST LINE
 	for( n = 0 ; n < chars ; n++){
 		//default blank space
