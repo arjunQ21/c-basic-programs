@@ -5,6 +5,7 @@ Bug Removed :)
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
+#include <conio.h>
 
 #define LIMIT 20
 
@@ -53,6 +54,7 @@ main(){
 		showSevenSegment();
 		printf("\nWanna Try again?(y)");
 		continueShowing = getch();		
+//		clrscr();
 	}
 	printf("\n\nYou chose to exit.");
 	getch();
@@ -63,16 +65,12 @@ main(){
 void showSevenSegment(){
 	int n;
 	resetNumbers() ;
-<<<<<<< HEAD
 	addInputToNumbers() ;
 //	printf("\nShowing Seven Segement Display Of %s:\n\n", input);
-
-=======
-	addToNumbers( num );
+//	addToNumbers( num );
 //	printf("\nArray Numbers:\n");
 //	showArray(numbers);
-	printf("\nShowing Seven Segement Display Of %d:\n\n", num);
->>>>>>> bd31f6966d1b33665fc5ffbd834186c2b49941dd
+//	printf("\nShowing Seven Segement Display Of %d:\n\n", num);
 	//SHOWING FIRST LINE
 	for( n = 0 ; n < chars ; n++){
 		//default blank space
