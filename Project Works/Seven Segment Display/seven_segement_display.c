@@ -27,9 +27,9 @@ int numbers[ LIMIT ] = {0} ;
 char input[ LIMIT ] ;
 int chars = 0 ;
 // must be an integer between 0 - 9
-int def_invalid = 0 ;
+int def_invalid = 10 ;
 //map of every numbers from 0 to 9
-int map[10][7]={
+int map[11][7]={
 	{1, 1, 1, 0, 1, 1, 1},
 	{0, 0, 1, 0, 0, 1, 0},
 	{1, 0, 1, 1, 1, 0, 1},
@@ -39,7 +39,8 @@ int map[10][7]={
 	{1, 1, 0, 1, 1, 1, 1},
 	{1, 0, 1, 0, 0, 1, 0},
 	{1, 1, 1, 1, 1, 1, 1},
-	{1, 1, 1, 1, 0, 1, 1}	
+	{1, 1, 1, 1, 0, 1, 1},
+	{1, 1, 0, 1, 1, 0, 1} // map of E, for invalid number input
 };
 
 main(){
@@ -135,7 +136,8 @@ void showSevenSegment(){
 	printf("\n");
 	//END THIRD LINE
 	//little margin for display
-	printf("\n");		
+	printf("\n");	
+	chars = 0 ;	
 }
 
 void resetNumbers(){
@@ -153,7 +155,7 @@ void addInputToNumbers(){
 			if(ascii >= 48 && ascii <= 57){
 				numbers[i] = ascii - 48 ;
 			}else{
-				printf("\nInvalid Number '%c'. Showing %d instead.\n", ascii, def_invalid );
+				printf("\nInvalid Number '%c'. Showing E instead.\n", ascii );
 				numbers[i] = def_invalid ;
 			}	
 			chars ++ ;		
