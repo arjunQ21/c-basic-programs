@@ -23,13 +23,13 @@ main(){
 	
 	printf("Written By:\n\tArjun Adhikari");
 	printf("\nHey, This program helps you to find out the number of cashes you get in return after you make a purchase.\n");
-	printf("Enter your expense: Rs. ");
+	printf("Kati Rupya ko saman kiniyo? Rs. ");
 	scanf("%d", &expense);	
 	while(1){
-		printf("How much are you paying? Rs.");
+		printf("Kati tirni ho ta? Rs.");
 		scanf("%d", &paid);
 		if( paid < expense){
-			printf("Hey, you must pay more than Rs.%d.\n", expense);
+			printf("Rs.%d vanda badi dini vaye de, natra tero sabbai sampati chordinxu.\n", expense);
 		}else{
 			break ;
 		}		
