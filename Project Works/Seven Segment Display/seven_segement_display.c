@@ -26,7 +26,7 @@ char def_zero[] = " ";
 int numbers[ LIMIT ] = {0} ;
 char input[ LIMIT ] ;
 int chars = 0 ;
-// must be an integer between 0 - 9
+
 int def_invalid = 10 ;
 //map of every numbers from 0 to 9
 int map[11][7]={
@@ -40,7 +40,7 @@ int map[11][7]={
 	{1, 0, 1, 0, 0, 1, 0},
 	{1, 1, 1, 1, 1, 1, 1},
 	{1, 1, 1, 1, 0, 1, 1},
-	{1, 1, 0, 1, 1, 0, 1} // map of E, for invalid number input
+	{1, 1, 0, 1, 1, 0, 1}  // map of E, for invalid number input
 };
 
 main(){
