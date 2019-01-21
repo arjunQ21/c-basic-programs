@@ -12,8 +12,8 @@ void line(){
 }
 
 void tableCols(int first, int second){
-	printf("%s|%s%4d%s|%s%3d%s|\n", spacing, padding, first, padding, padding, second, padding);
-	line();
+	printf("%s|%s%4d%s|%s%3d%s|\n", spacing, padding, first, paddi	line();
+ng, padding, second, padding);
 }
 
 main(){

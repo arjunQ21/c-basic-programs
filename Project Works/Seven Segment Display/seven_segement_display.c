@@ -1,7 +1,3 @@
-/*
-Bug Removed :)
-*/
-
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
@@ -14,10 +10,6 @@ void showArray( int arr[]) ;
 void showSevenSegment();
 void resetNumbers();
 void addInputToNumbers();
-//void addToNumbers( int num) ;
-//int firstDigitOf( int );
-//int removedFirstDigit( int );
-
 
 //GLOBAL VARIABLES
 //char l_spacing[] = " ";
@@ -55,7 +47,6 @@ main(){
 		showSevenSegment();
 		printf("\nWanna Try again?(y)");
 		continueShowing = getch();		
-//		clrscr();
 	}
 	printf("\n\nYou chose to exit.");
 	getch();
@@ -67,11 +58,6 @@ void showSevenSegment(){
 	int n;
 	resetNumbers() ;
 	addInputToNumbers() ;
-//	printf("\nShowing Seven Segement Display Of %s:\n\n", input);
-//	addToNumbers( num );
-//	printf("\nArray Numbers:\n");
-//	showArray(numbers);
-//	printf("\nShowing Seven Segement Display Of %d:\n\n", num);
 	//SHOWING FIRST LINE
 	for( n = 0 ; n < chars ; n++){
 		//default blank space
