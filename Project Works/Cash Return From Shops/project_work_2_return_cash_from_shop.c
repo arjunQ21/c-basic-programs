@@ -12,35 +12,28 @@ void line(){
 }
 
 void tableCols(int first, int second){
-	printf("%s|%s%4d%s|%s%3d%s|\n", spacing, padding, first, paddi	line();
-ng, padding, second, padding);
+	printf("%s|%s%4d%s|%s%3d%s|\n", spacing, padding, first, padding, padding, second, padding);
+	line();
+
 }
 
 main(){
 	int i, j, times;
 	int remaining  ;
 	int expense, paid ;
-	char sec[] = " la aba ta badi de hai tyo vanda. Natra feri tauko ma ek superman punch handinxu.\nKati? Rs.";
-	int f_sec = 0 ;
 	
 	printf("Written By:\n\tArjun Adhikari");
 	printf("\nHey, This program helps you to find out the number of cashes you get in return after you make a purchase.\n");
-	printf("Kati Rupya ko saman kiniyo? Rs. ");
+	printf("\nWhat was your expense? Rs. ");
 	scanf("%d", &expense);	
 	while(1){
-		if(! f_sec){
-			printf("Kati tirni ho ta babu, pasale lai ramro note deka xau hola ni, nadeko bhaya de hal natra talai gata parxu.\n Rs.");
-		}else{
-			printf(sec);
-		}
-		
+		printf("How much are you paying?: ");
 		scanf("%d", &paid);
 		if( paid < expense){
-			printf("talai bhikari Rs.%d vanda badi dini vaye de, natra tero nak sak futalera kukur lai dinxu....\n", expense);
+			printf("Please pay more than Rs. %d.\n", expense);
 		}else{
 			break ;
-		}
-		f_sec = 1 ;		
+		}	
 	}
 	
 	remaining = paid - expense ;
