@@ -2,7 +2,7 @@
 #include <string.h>
 #include <process.h>
 
-#define STUDENTS 2
+#define STUDENTS 4
 
 struct Address {
 	int ward ;
@@ -42,13 +42,16 @@ void displayStudent( struct Students student, int position ){
 		printf("\n\t%s : %2f", subjects[i], student.marks[i] );
 	}
 	printf("\n Address: \n\tCity: %s\n\tStreet Name: %s\n\tWard No.: %d", student.address.city, student.address.street_name, student.address.ward );
-	printf("\n Date Of Birth:  %d-%d-%d", student.dob.day, student.dob.month, student.dob.year);
+	printf("\n Date Of Birth:  %d-%d-%d\n", student.dob.day, student.dob.month, student.dob.year);
+	line();
 }
 
 main(){
+	int i ;
 	struct Students student[ STUDENTS ];	
 	for ( i = 0 ;  i < STUDENTS ; i++){
 		student[i] = readStudentData( i + 1 );
+		displayStudent(student[i], i+1 );
 	}
 	printf("Showing students with GPA more than 3.0.\n");
 	for( i = 0 ; i < STUDENTS ; i++){
@@ -58,7 +61,7 @@ main(){
 	}
 	printf("Showing students from mahendrapool: \n");
 	for( i = 0; i < STUDENTS ; i ++){
-		if( strcmp(student[i].address.city, "mahendrapool") == 0){
+		if( strcmp(student[i].address.street_name, "mahendrapool") == 0){
 			displayStudent( student[i], i+1);
 		}
 	}
@@ -73,7 +76,7 @@ main(){
 struct Students readStudentData(int position){
 	struct Students student ;
 	int i ;
-	printf("Enter the data of Student %d:", position);
+	printf("\nEnter the data of Student %d:", position);
 	printf("\n Enter name: ");
 	scanf("%s", student.name );
 	printf("the read name was: %s", student.name);
@@ -116,7 +119,7 @@ struct Address readAddress( struct Address addr){
 }
 
 void line(){
-	printf("--------------------------------------------------------------------------------------------------------\n");
+	printf("------------------------------------------------------------------------------------\n");
 }
 
 void showTitle(){
