@@ -79,17 +79,16 @@ struct Students readStudentData(int position){
 	printf("\nEnter the data of Student %d:", position);
 	printf("\n Enter name: ");
 	scanf("%s", student.name );
-	printf("the read name was: %s", student.name);
-	printf("\n Enter GPA OF: ");
-	for(i =0 ;i< 8; i++){
-		printf("\n %d semester: ", i+1) ;
+	printf("\n Enter GPA In: ");
+	for(i =0 ;i < 8; i++){
+		printf("\n\tsemester %d : ", i+1) ;
 		scanf("%f", &student.gpa[i]);
 		student.avgGPA += student.gpa[i];
 	}
 	student.avgGPA /= 8 ;
 	printf("\nEnter marks in") ;
 	for( i = 0; i < 6; i++){
-		printf("\n %s:", subjects[i] );
+		printf("\n   %s:", subjects[i] );
 		scanf("%f", &student.marks[i] );
 	}	
 	printf("Enter Address Of student %d:", position );
