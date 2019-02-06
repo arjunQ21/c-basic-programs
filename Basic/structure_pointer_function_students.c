@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <conio.h>
-
-#define STUDENTS 10
+#include <stdlib.h>
 
 /* Structure Declarations */
 
@@ -30,7 +29,7 @@ typedef struct {
 
 char subjects[6][20] = {"Maths","English","Physics","C-Prog","PST","FIT"};
 int lastRollNo = 0 ;
-
+int totalStudents = 0 ;
 /* Function Declarations */
 
 void readAddress( Address *) ;
@@ -47,10 +46,13 @@ main(){
 	int i ;
 	char chooseAgain = 'y' ;
 	int choice = 0 ;
-	Student student[ STUDENTS ] ;	
-	for ( i = 0 ;  i < STUDENTS ; i++){
-		readStudent( &student[i] );
-		displayStudent(&student[i] );
+	Student * sptr ;
+	printf("How many students are there ?  ");
+	scanf("%d", &totalStudents );
+	sptr = calloc(totalStudents, sizeof(Student));		
+	for ( i = 0 ;  i < totalStudents ; i++){
+		readStudent( sptr + i );
+		displayStudent( sptr + i) ;
 	}
 	printf("\n Taking data completed.\n");
 	while(chooseAgain == 'y'){
@@ -60,25 +62,25 @@ main(){
 		switch(choice){
 			case 1:
 				printf("\n Showing Students from mahendrapool.");
-				for( i = 0 ; i < STUDENTS ; i++){
-					if( isFromMP(&student[i])){
-						displayStudent( &student[i] );
+				for( i = 0 ; i < totalStudents ; i++){
+					if( isFromMP(sptr + i)){
+						displayStudent( sptr + i );
 					}
 				}
 				break ;
 			case 2:
 				printf("\n Showing Students born before 2000 AD.");
-				for( i = 0 ; i < STUDENTS ; i++){
-					if( isBelow2000(&student[i])){
-						displayStudent( &student[i] );
+				for( i = 0 ; i < totalStudents ; i++){
+					if( isBelow2000(sptr + i)){
+						displayStudent( sptr + i );
 					}
 				}
 				break ;		
 			case 3:
 				printf("\n Showing Students whose average GPA is above 3.0.");
-				for( i = 0 ; i < STUDENTS ; i++){
-					if( hasGoodGPA(&student[i])){
-						displayStudent( &student[i] );
+				for( i = 0 ; i < totalStudents ; i++){
+					if( hasGoodGPA(sptr + i)){
+						displayStudent( sptr + i );
 					}
 				}
 				break ;	
