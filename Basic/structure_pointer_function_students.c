@@ -10,11 +10,13 @@ typedef struct {
 	char street_name[30]  ;
 	char city[30]  ;
 } Address ;
+
 typedef struct {
 	int day ;
 	int month  ;
 	int year ;
 } DOB;
+
 typedef struct {
 	int rollNo ;
 	char name[50] ;
@@ -30,6 +32,7 @@ typedef struct {
 char subjects[6][20] = {"Maths","English","Physics","C-Prog","PST","FIT"};
 int lastRollNo = 0 ;
 int totalStudents = 0 ;
+
 /* Function Declarations */
 
 void readAddress( Address *) ;
@@ -41,11 +44,10 @@ int isFromMP( Student * student) ;
 int isBelow2000( Student * student);
 int hasGoodGPA( Student * student );
 
-
 main(){
 	int i ;
 	char chooseAgain = 'y' ;
-	int choice = 0 ;
+	int choice = 1 ;
 	Student * sptr ;
 	printf("How many students are there ?  ");
 	scanf("%d", &totalStudents );
@@ -92,6 +94,9 @@ main(){
 	}
 	printf("\n\nYou chose to exit.");
 }
+
+/* Function Definitions */
+
 int hasGoodGPA( Student * student){
 	if( student->avgGPA > 3.0){
 		return 1 ;
@@ -137,7 +142,7 @@ void displayStudent( Student *student ){
 	int i ;
 	printf("\n");
 	line() ;
-	printf("\t\t\t  %*s\n",( 15 - (strlen(student->name))/2), student->name ) ;
+	printf("\t\t\t  %s\n", student->name ) ;
 	printf("Roll No: %d\n", student->rollNo );
 	printf("Average GPA: %.2f\n", student->avgGPA) ;
 	printf("Marks:");
